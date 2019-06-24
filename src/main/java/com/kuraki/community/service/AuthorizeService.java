@@ -8,12 +8,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
-public class IndexService {
+public class AuthorizeService {
 
-    @Value("${community.github.clientId}")
+    @Value("${community.github.client.id}")
     private String clientId;
 
-    @Value("${community.github.clientSecret}")
+    @Value("${community.github.client.secret}")
     private String clientSecret;
 
     @Value("${community.github.authority.redirect-uri}")
