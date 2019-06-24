@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Service
 public class AuthorizeService {
 
@@ -22,7 +24,7 @@ public class AuthorizeService {
     @Autowired
     private GithubProvider githubProvider;
 
-    public String callback(String code, String state) {
+    public String callback(String code, String state, HttpServletRequest request) {
         AccessTokenDTO dto = new AccessTokenDTO();
         dto.setClientId(clientId);
         dto.setClientSecret(clientSecret);
@@ -32,6 +34,9 @@ public class AuthorizeService {
         String accessToken = githubProvider.getAccessToken(dto);
         GithubUser githubUser = githubProvider.getGithubUser(accessToken);
         System.out.println("githubUser = " + githubUser);
+        if (githubUser != null) {
+            request.getSession().setAttribute("user", githubUser);
+        }
         return null;
     }
 }
