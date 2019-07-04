@@ -10,6 +10,7 @@ import org.springframework.http.converter.HttpMessageConverter;
 
 @Configuration
 public class HttpConverterConfig {
+
     @Bean
     public HttpMessageConverters fastJsonHttpMessageConverters() {
         // 1.定义一个converters转换消息的对象

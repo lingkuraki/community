@@ -12,7 +12,7 @@ import java.io.IOException;
 @Component
 public class GithubProvider {
 
-    public static final MediaType MEDIATYPE = MediaType.get("application/json; charset=utf-8");
+    private static final MediaType MEDIATYPE = MediaType.get("application/json; charset=utf-8");
 
     @Autowired
     private OkHttpClient okHttpClient;
